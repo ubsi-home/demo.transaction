@@ -1,0 +1,16 @@
+{
+  "services": {
+    "ubsi.demo.transaction.order": {
+      "class_name": "ubsi.demo.transaction.OrderSrv",
+      "startup": true
+    },
+    "ubsi.demo.transaction.product": {
+      "class_name": "ubsi.demo.transaction.ProductSrv",
+      "startup": true
+    },
+    "ubsi.demo.transaction.account": {
+      "class_name": "ubsi.demo.transaction.AccountSrv",
+      "startup": true
+    }
+  }
+}

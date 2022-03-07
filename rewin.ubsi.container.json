@@ -1,0 +1,9 @@
+{
+  "host": "192.168.1.13",
+  "port": 7112,
+  "backlog": 128,
+  "io_threads": 0,
+  "work_threads": 10,
+  "overload": 100,
+  "forward": 0
+}

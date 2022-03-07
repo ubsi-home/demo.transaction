@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：为了使用接口动态代理，这里必须是接口的全路径名-->
+<mapper namespace="ubsi.demo.transaction.dao.AccountDao">
+
+    <!-- 修改帐户余额 -->
+    <update id="updateAccount" parameterType="ubsi.demo.transaction.dao.Order">
+        UPDATE account SET
+            value = value - #{value}
+        WHERE
+            account = #{account}
+            AND
+            value >= #{value}
+    </update>
+
+    <!-- 新增变动历史 -->
+    <insert id="addLog" parameterType="ubsi.demo.transaction.dao.Order">
+        INSERT INTO acc_log (
+            `order`,
+            `account`,
+            `value`
+        ) VALUES (
+            #{order},
+            #{account},
+            #{value}
+        );
+    </insert>
+
+    <!-- 查询变更记录 -->
+    <select id="getLog" resultType="ubsi.demo.transaction.dao.AccountLog">
+        select * from acc_log where `order` = #{order}
+    </select>
+
+    <!-- 删除变更记录 -->
+    <update id="delLog">
+        delete from acc_log where `order` = #{order}
+    </update>
+
+</mapper>

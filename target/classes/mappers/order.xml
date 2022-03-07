@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：为了使用接口动态代理，这里必须是接口的全路径名-->
+<mapper namespace="ubsi.demo.transaction.dao.OrderDao">
+
+    <!-- 新增订单 -->
+    <insert id="addOrder" parameterType="ubsi.demo.transaction.dao.Order">
+        INSERT INTO demo_tx.order (
+        `order`,
+        `account`,
+        `product`,
+        `amount`,
+        `value`
+        ) VALUES (
+        #{order},
+        #{account},
+        #{product},
+        #{amount},
+        #{value}
+        );
+    </insert>
+
+    <!-- 删除订单 -->
+    <update id="delOrder">
+        delete from demo_tx.order where `order` = #{order}
+    </update>
+
+</mapper>
